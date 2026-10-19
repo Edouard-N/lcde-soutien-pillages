@@ -39,7 +39,7 @@ netlify.toml          en-têtes de sécurité et de cache
 }
 ```
 
-- `fiabilite` : `presse` (un article cite la cagnotte), `mention` (la presse l'évoque sans lien), `plateforme` (page de collecte uniquement), ou `non-confirmee` (jamais affichée).
+- `fiabilite` : `presse` (un article cite la cagnotte), `boutique` (le compte officiel du commerce la relaie), `mention` (la presse l'évoque sans lien), `plateforme` (page de collecte uniquement), ou `non-confirmee` (jamais affichée).
 - `boutique` s'affiche en titre de la carte, `activite` juste au-dessus (laisser vide si inconnue). `titre_cagnotte` sert à la recherche.
 - `image` : photo de la carte, au format 16/9 (idéalement 800×450, en JPEG). On peut reprendre l'image d'en-tête de la page Leetchi. Sans image, la carte affiche le nom de la boutique sur fond jaune.
 - `source` : `null` s'il n'y a pas d'article.

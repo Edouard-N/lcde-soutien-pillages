@@ -181,8 +181,11 @@
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/aidons-monceau-optique-2130375387",
     "image": "/assets/cagnottes/paris-monceau-optique.jpg",
-    "source": null,
-    "fiabilite": "plateforme",
+    "source": {
+      "nom": "Instagram de la boutique",
+      "url": "https://www.instagram.com/monceauoptique/"
+    },
+    "fiabilite": "boutique",
     "remarque": "",
     "alerte": false,
     "publie": true

@@ -3,8 +3,9 @@
 
   var FIABILITE = {
     presse: { label: 'Confirmée par la presse', cls: 'badge-presse', ordre: 0 },
-    mention: { label: 'Mentionnée par la presse', cls: 'badge-mention', ordre: 1 },
-    plateforme: { label: 'Source : page de la cagnotte', cls: 'badge-plateforme', ordre: 2 }
+    boutique: { label: 'Confirmée par la boutique', cls: 'badge-presse', ordre: 1 },
+    mention: { label: 'Mentionnée par la presse', cls: 'badge-mention', ordre: 2 },
+    plateforme: { label: 'Source : page de la cagnotte', cls: 'badge-plateforme', ordre: 3 }
   };
 
   var grid = document.getElementById('cagnottes-grid');
