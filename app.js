@@ -64,12 +64,17 @@
 
     // Photo cliquable (doublon du bouton, retiré de la tabulation)
     var media = el('a', { class: 'card-media', href: c.lien, target: '_blank', rel: 'noopener noreferrer', tabindex: '-1', 'aria-hidden': 'true' });
+    // Sans photo : nom de la boutique sur fond jaune
+    var placeholder = function () {
+      media.classList.add('is-empty');
+      media.appendChild(el('span', { class: 'card-placeholder', text: nom }));
+    };
     if (c.image) {
       var img = el('img', { src: c.image, alt: '', loading: 'lazy', decoding: 'async', width: '800', height: '450' });
-      img.addEventListener('error', function () { media.classList.add('is-empty'); img.remove(); });
+      img.addEventListener('error', function () { img.remove(); placeholder(); });
       media.appendChild(img);
     } else {
-      media.classList.add('is-empty');
+      placeholder();
     }
     media.appendChild(el('span', { class: 'card-city', text: c.ville }));
 
