@@ -171,6 +171,23 @@
     "publie": true
   },
   {
+    "id": "paris-monceau-optique",
+    "ville": "Paris",
+    "quartier": "3 rue Treilhard (8e)",
+    "boutique": "Monceau Optique",
+    "activite": "Opticien",
+    "titre_cagnotte": "Aidons Monceau Optique",
+    "organisateur": "Un ami de la gérante",
+    "plateforme": "Leetchi",
+    "lien": "https://www.leetchi.com/fr/c/aidons-monceau-optique-2130375387",
+    "image": "/assets/cagnottes/paris-monceau-optique.jpg",
+    "source": null,
+    "fiabilite": "plateforme",
+    "remarque": "",
+    "alerte": false,
+    "publie": true
+  },
+  {
     "id": "reve-de-jade",
     "ville": "Rhône (69)",
     "quartier": "",
