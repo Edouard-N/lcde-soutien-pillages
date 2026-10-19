@@ -37,54 +37,80 @@
     return /^https:\/\//i.test(url || '');
   }
 
-  var EXTERNAL_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" fill="currentColor"/></svg>';
+  function icon(path) {
+    return '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="' + path + '" fill="currentColor"/></svg>';
+  }
+  var ICON = {
+    pin: icon('M12 2a7 7 0 0 1 7 7c0 5.2-7 13-7 13S5 14.2 5 9a7 7 0 0 1 7-7Zm0 4.5A2.5 2.5 0 1 0 12 11.5 2.5 2.5 0 0 0 12 6.5Z'),
+    user: icon('M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5Z'),
+    check: icon('M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4-6 6Z'),
+    info: icon('M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm1 8h-2v7h2v-7Zm0-3.5h-2v2h2v-2Z'),
+    alert: icon('M12 2 1 21h22L12 2Zm1 14h-2v2h2v-2Zm0-7h-2v5h2V9Z'),
+    arrow: icon('M13.2 5.3 19.9 12l-6.7 6.7-1.4-1.4 4.3-4.3H4v-2h12.1l-4.3-4.3 1.4-1.4Z'),
+    external: icon('M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z')
+  };
+
+  function iconLine(cls, svg, text) {
+    var row = el('p', { class: 'card-line ' + cls });
+    row.innerHTML = svg;
+    row.appendChild(el('span', { text: text }));
+    return row;
+  }
 
   function renderCard(c) {
     var f = FIABILITE[c.fiabilite] || FIABILITE.plateforme;
+    var nom = c.boutique || c.titre_cagnotte;
+    var newTab = ' (s’ouvre dans un nouvel onglet)';
 
-    var top = el('div', { class: 'card-top' }, [
-      el('span', { class: 'city', text: c.ville }),
-      c.quartier ? el('span', { class: 'place', text: c.quartier }) : null
-    ]);
-
-    var meta = el('dl', { class: 'meta' }, [
-      el('div', null, [el('dt', { text: 'Organisée par' }), el('dd', { text: c.organisateur || 'Non précisé' })]),
-      el('div', null, [el('dt', { text: 'Plateforme' }), el('dd', { text: c.plateforme || 'Non précisée' })])
-    ]);
-
-    var verif = el('div', { class: 'verif' }, [el('span', { class: 'badge ' + f.cls, text: f.label })]);
-    if (c.source && isSafeUrl(c.source.url)) {
-      verif.appendChild(el('a', {
-        href: c.source.url, target: '_blank', rel: 'noopener noreferrer',
-        text: 'Lire la source (' + c.source.nom + ')'
-      }));
-    }
-
-    var remark = null;
-    if (c.remarque) {
-      remark = el('p', { class: 'remark' + (c.alerte ? ' is-alert' : '') });
-      if (c.alerte) remark.appendChild(el('strong', { text: 'À savoir : ' }));
-      remark.appendChild(document.createTextNode(c.remarque));
-    }
-
-    var cta = el('a', {
-      class: 'btn btn-primary btn-block',
-      href: c.lien, target: '_blank', rel: 'noopener noreferrer',
-      'aria-label': 'Participer à la cagnotte « ' + c.commerce + ' » sur ' + (c.plateforme || 'la plateforme') + ' (nouvel onglet)'
-    });
-    cta.innerHTML = 'Participer sur ' + (c.plateforme || 'la plateforme') + ' ' + EXTERNAL_ICON;
-
-    var media = el('div', { class: 'card-media' });
+    // Photo cliquable (doublon du bouton, retiré de la tabulation)
+    var media = el('a', { class: 'card-media', href: c.lien, target: '_blank', rel: 'noopener noreferrer', tabindex: '-1', 'aria-hidden': 'true' });
     if (c.image) {
-      var img = el('img', { src: c.image, alt: 'Photo de la cagnotte « ' + c.commerce + ' »', loading: 'lazy', decoding: 'async', width: '800', height: '450' });
+      var img = el('img', { src: c.image, alt: '', loading: 'lazy', decoding: 'async', width: '800', height: '450' });
       img.addEventListener('error', function () { media.classList.add('is-empty'); img.remove(); });
       media.appendChild(img);
     } else {
       media.classList.add('is-empty');
     }
+    media.appendChild(el('span', { class: 'card-city', text: c.ville }));
 
-    var body = el('div', { class: 'card-body' }, [top, el('h3', { text: c.commerce }), meta, verif, remark, cta]);
-    return el('article', { class: 'card' }, [media, body]);
+    var head = el('div', { class: 'card-head' }, [
+      c.activite ? el('p', { class: 'card-kicker', text: c.activite }) : null,
+      el('h3', { class: 'card-title', text: nom })
+    ]);
+
+    var lines = el('div', { class: 'card-lines' }, [
+      iconLine('is-place', ICON.pin, [c.quartier, c.ville].filter(Boolean).join(', ')),
+      c.organisateur ? iconLine('is-orga', ICON.user, 'Organisée par ' + c.organisateur) : null
+    ]);
+
+    var verif = el('div', { class: 'card-verif' });
+    var badge = el('span', { class: 'badge ' + f.cls });
+    badge.innerHTML = ICON.check;
+    badge.appendChild(document.createTextNode(f.label));
+    verif.appendChild(badge);
+    if (c.source && isSafeUrl(c.source.url)) {
+      var src = el('a', { class: 'card-source', href: c.source.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': 'Lire l’article de ' + c.source.nom + newTab });
+      src.textContent = c.source.nom;
+      src.insertAdjacentHTML('beforeend', ICON.external);
+      verif.appendChild(src);
+    }
+
+    var remark = null;
+    if (c.remarque) {
+      remark = el('p', { class: 'card-note' + (c.alerte ? ' is-alert' : '') });
+      remark.innerHTML = c.alerte ? ICON.alert : ICON.info;
+      remark.appendChild(el('span', { text: c.remarque }));
+    }
+
+    var cta = el('a', {
+      class: 'btn btn-primary btn-block card-cta',
+      href: c.lien, target: '_blank', rel: 'noopener noreferrer',
+      'aria-label': 'Soutenir ' + nom + ' : faire un don sur ' + (c.plateforme || 'la plateforme de la cagnotte') + newTab
+    });
+    cta.innerHTML = '<span>Faire un don</span>' + ICON.arrow;
+
+    var body = el('div', { class: 'card-body' }, [head, lines, verif, remark]);
+    return el('article', { class: 'card' }, [media, body, el('div', { class: 'card-foot' }, [cta])]);
   }
 
   function filtered() {
@@ -92,7 +118,7 @@
     return cagnottes.filter(function (c) {
       if (state.ville !== 'Toutes' && c.ville !== state.ville) return false;
       if (!q) return true;
-      return normalize([c.commerce, c.ville, c.quartier, c.organisateur].join(' ')).indexOf(q) !== -1;
+      return normalize([c.boutique, c.activite, c.titre_cagnotte, c.ville, c.quartier, c.organisateur].join(' ')).indexOf(q) !== -1;
     });
   }
 

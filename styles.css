@@ -164,47 +164,75 @@ p { margin: 0; }
 .results-count { color: var(--grey-text); font-size: .9375rem; margin-bottom: 20px; min-height: 1.5em; }
 
 /* Cartes */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 24px; }
 .card {
-  display: flex; flex-direction: column; overflow: hidden;
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: transform .2s, box-shadow .2s, border-color .2s;
+  box-shadow: 0 1px 2px rgba(20, 20, 43, .04);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
-.card:hover { transform: translateY(-3px); border-color: #d4d4dc; box-shadow: 0 2px 4px rgba(20, 20, 43, .05), 0 16px 36px rgba(20, 20, 43, .09); }
-.card-media { aspect-ratio: 16 / 9; background: var(--bg-alt); overflow: hidden; }
-.card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-.card:hover .card-media img { transform: scale(1.03); }
-.card-media.is-empty { background: var(--yellow) url("/assets/logo-lcde-noir.png") center / 45% auto no-repeat; opacity: .9; }
-.card-body { display: flex; flex-direction: column; gap: 14px; flex: 1; padding: 22px 24px 24px; }
-.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.city {
-  font-family: var(--font-title); font-size: .8125rem; font-weight: 600;
-  background: var(--yellow); padding: 4px 12px; border-radius: 999px;
+.card:hover { transform: translateY(-4px); border-color: transparent; box-shadow: 0 2px 6px rgba(20, 20, 43, .05), 0 20px 40px -12px rgba(20, 20, 43, .18); }
+
+.card-media { position: relative; display: block; aspect-ratio: 16 / 9; background: var(--bg-alt); overflow: hidden; }
+.card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.card:hover .card-media img { transform: scale(1.04); }
+.card-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, .28) 0%, transparent 38%); pointer-events: none; }
+.card-media.is-empty { background: var(--yellow) url("/assets/logo-lcde-noir.png") center / 46% auto no-repeat; }
+.card-media.is-empty::after { display: none; }
+.card-city {
+  position: absolute; top: 14px; left: 14px; z-index: 1;
+  font-family: var(--font-title); font-size: .8125rem; font-weight: 600; line-height: 1;
+  background: #fff; color: var(--ink); padding: 8px 12px; border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
 }
-.place { font-size: .9375rem; color: var(--grey-text); }
-.card h3 { font-size: 1.25rem; font-weight: 600; }
-.meta { display: grid; gap: 4px; font-size: .9375rem; color: var(--grey-text); margin: 0; }
-.meta div { display: flex; gap: 6px; }
-.meta dt { color: var(--grey); flex: none; }
-.meta dd { margin: 0; color: var(--ink); }
-.verif { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: .9375rem; }
-.verif a { font-weight: 600; text-underline-offset: 3px; }
-.verif a:hover { text-decoration-color: var(--yellow); text-decoration-thickness: 2px; }
+.card-media.is-empty .card-city { background: var(--ink); color: #fff; box-shadow: none; }
+
+.card-body { display: flex; flex-direction: column; gap: 16px; flex: 1; padding: 22px 24px 4px; }
+.card-head { display: grid; gap: 6px; }
+.card-kicker {
+  font-family: var(--font-title); font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--grey);
+}
+.card-title { font-size: 1.5rem; font-weight: 700; line-height: 1.15; }
+
+.card-lines { display: grid; gap: 8px; }
+.card-line { display: flex; gap: 10px; align-items: flex-start; font-size: .9375rem; line-height: 1.45; color: var(--grey-text); }
+.card-line svg { width: 18px; height: 18px; flex: none; margin-top: 1px; color: var(--grey); }
+
+.card-verif {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px;
+  padding-top: 16px; border-top: 1px solid var(--line);
+}
+.card-source {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-title); font-size: .8125rem; font-weight: 600; color: var(--ink);
+  text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px;
+  transition: border-color .2s;
+}
+.card-source svg { width: 13px; height: 13px; }
+.card-source:hover { border-bottom-color: var(--ink); }
+
+.card-note { display: flex; gap: 10px; align-items: flex-start; font-size: .875rem; line-height: 1.45; color: var(--grey-text); background: var(--bg-alt); border-radius: 12px; padding: 12px 14px; }
+.card-note svg { width: 18px; height: 18px; flex: none; color: var(--grey); }
+.card-note.is-alert { background: #fff6e5; color: #7a4a00; }
+.card-note.is-alert svg { color: #c27a00; }
+
+.card-foot { padding: 20px 24px 24px; margin-top: auto; }
+.card-cta { justify-content: space-between; padding: 1rem 1.4rem 1rem 1.6rem; font-size: 1rem; }
+.card-cta svg { width: 20px; height: 20px; transition: transform .25s ease; }
+.card-cta:hover svg { transform: translateX(4px); }
+
 .badge {
   display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--font-title); font-size: .78rem; font-weight: 600;
-  padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+  padding: 5px 10px; border-radius: 999px; white-space: nowrap;
 }
 .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.badge svg { width: 14px; height: 14px; }
+.card .badge::before { display: none; }
 .badge-presse { background: #e7f6ec; color: #11683a; }
 .badge-mention { background: #eaf1fb; color: #1f4f8f; }
 .badge-plateforme { background: #f0f0f3; color: #4b4b57; }
-.remark { font-size: .9375rem; color: var(--grey-text); background: var(--bg-alt); border-radius: var(--radius-sm); padding: 10px 14px; }
-.remark.is-alert { background: var(--alert-soft); color: var(--alert); }
-.remark.is-alert strong { font-family: var(--font-title); }
-.card .btn { margin-top: auto; }
-.card .btn svg { width: 16px; height: 16px; }
 .empty { grid-column: 1 / -1; text-align: center; color: var(--grey-text); padding: 48px 16px; border: 1px dashed var(--line); border-radius: var(--radius); }
 .empty a { font-weight: 600; }
 

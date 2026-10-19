@@ -24,7 +24,9 @@ netlify.toml          en-têtes de sécurité et de cache
   "id": "ville-nom-du-commerce",
   "ville": "Paris",
   "quartier": "Rue de Rivoli (1er)",
-  "commerce": "Nom affiché de la cagnotte ou du commerce",
+  "boutique": "Nom de la boutique (titre de la carte)",
+  "activite": "Librairie, Vêtements…",
+  "titre_cagnotte": "Titre de la cagnotte sur la plateforme",
   "organisateur": "Qui a lancé la cagnotte",
   "plateforme": "Leetchi",
   "lien": "https://www.leetchi.com/fr/c/…",
@@ -38,6 +40,7 @@ netlify.toml          en-têtes de sécurité et de cache
 ```
 
 - `fiabilite` : `presse` (un article cite la cagnotte), `mention` (la presse l'évoque sans lien), `plateforme` (page de collecte uniquement), ou `non-confirmee` (jamais affichée).
+- `boutique` s'affiche en titre de la carte, `activite` juste au-dessus (laisser vide si inconnue). `titre_cagnotte` sert à la recherche.
 - `image` : photo de la carte, au format 16/9 (idéalement 800×450, en JPEG). On peut reprendre l'image d'en-tête de la page Leetchi. Sans image, la carte affiche le logo LCDE sur fond jaune.
 - `source` : `null` s'il n'y a pas d'article.
 - `alerte: true` affiche la remarque en rouge (ex. : « pas une collecte officielle », « attention aux fausses cagnottes »).
