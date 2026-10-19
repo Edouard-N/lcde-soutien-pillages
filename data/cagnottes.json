@@ -7,6 +7,7 @@
     "organisateur": "Simon Berna (PDG d'Axe Capital)",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/soutien-aux-commercants-de-lyon-saccages-et-pilles-1406761990",
+    "image": "/assets/cagnottes/lyon-commercants-presquile.jpg",
     "source": {
       "nom": "Lyon Capitale",
       "url": "https://www.lyoncapitale.fr/actualite/lyon-une-cagnotte-solidaire-pour-les-commercants-de-la-presquile-saccages-et-pilles"
@@ -24,6 +25,7 @@
     "organisateur": "Association de commerçants My Presqu'île",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/mobilisation-solidaire-pour-les-commercants-de-la-presquile-de-lyon-2063798608?u=9f384ffa-5dd2-49bc-9c8d-01a14eaf2802",
+    "image": "/assets/cagnottes/lyon-my-presquile.jpg",
     "source": {
       "nom": "Lyon Entreprises",
       "url": "https://www.lyon-entreprises.com/actualites/article/lyon-my-presquile-lance-une-cagnotte-pour-les-commercants"
@@ -41,6 +43,7 @@
     "organisateur": "Corentin Quinette (membre de l'équipe, à titre personnel)",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/aidons-momie-mangas-grenoble-a-se-relever-322522149",
+    "image": "/assets/cagnottes/grenoble-momie-mangas.jpg",
     "source": {
       "nom": "ActuaLitté",
       "url": "https://actualitte.com/article/134705/librairie/apres-les-violences-du-17-octobre-le-bilan-s-alourdit-pour-les-librairies"
@@ -58,6 +61,7 @@
     "organisateur": "Communauté du jeu vidéo",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/solidarite-gaming-aidons-le-responsable-micromania-jean-medecin-nice-2943919101",
+    "image": "/assets/cagnottes/nice-micromania-jean-medecin.jpg",
     "source": {
       "nom": "RetroGems",
       "url": "https://retrogems.fr/boulevard-voltaire-pillage-boutiques-jeux-video/"
@@ -75,6 +79,7 @@
     "organisateur": "La boutique",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/sauver-sat-elite-3790831052",
+    "image": "/assets/cagnottes/paris-sat-elite.jpg",
     "source": {
       "nom": "Journal du Geek",
       "url": "https://www.journaldugeek.com/2026/10/19/une-carte-pokemon-exceptionnelle-et-pas-chere-sur-vinted-elle-sort-peut-etre-dune-boutique-pillee-lors-des-manifestations/"
@@ -92,6 +97,7 @@
     "organisateur": "Voisins et habitués",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/aide-a-hassan-lyca-mobile-boulevard-magenta-2027907101",
+    "image": "/assets/cagnottes/paris-lyca-hassan.jpg",
     "source": {
       "nom": "Franceinfo",
       "url": "https://www.franceinfo.fr/societe/mobilisation-du-17-octobre/j-invite-chacun-a-venir-nous-aider-a-paris-lyon-et-limoges-des-riverains-se-mobilisent-pour-remettre-les-rues-en-etat-apres-les-manifestations-du-17-octobre_8242858.html"
@@ -109,6 +115,7 @@
     "organisateur": "Enfant du gérant",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/aidons-mon-pere-a-reconstruire-son-commerce-apres-le-pillage-3050369127",
+    "image": "/assets/cagnottes/paris-footmax.jpg",
     "source": null,
     "fiabilite": "plateforme",
     "remarque": "",
@@ -123,6 +130,7 @@
     "organisateur": "L'équipe de la boutique",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/aidons-la-boutique-jesuisavelo-a-se-relever-du-pillage-du-17-octobre-1970482896",
+    "image": "/assets/cagnottes/paris-je-suis-a-velo.jpg",
     "source": null,
     "fiabilite": "plateforme",
     "remarque": "",
@@ -137,6 +145,7 @@
     "organisateur": "Un ami des gérants",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/en-soutien-a-la-boutique-cartabaffe-2413458996",
+    "image": "/assets/cagnottes/paris-cartabaffe.jpg",
     "source": null,
     "fiabilite": "plateforme",
     "remarque": "",
@@ -151,6 +160,7 @@
     "organisateur": "Vanessa Rivas, la gérante (à titre personnel)",
     "plateforme": "Leetchi",
     "lien": "https://www.leetchi.com/fr/c/cases-et-vole-le-17-octobre-2026-3207227714",
+    "image": "/assets/cagnottes/reve-de-jade.jpg",
     "source": null,
     "fiabilite": "plateforme",
     "remarque": "",

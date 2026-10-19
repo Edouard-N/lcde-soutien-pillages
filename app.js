@@ -74,7 +74,17 @@
     });
     cta.innerHTML = 'Participer sur ' + (c.plateforme || 'la plateforme') + ' ' + EXTERNAL_ICON;
 
-    return el('article', { class: 'card' }, [top, el('h3', { text: c.commerce }), meta, verif, remark, cta]);
+    var media = el('div', { class: 'card-media' });
+    if (c.image) {
+      var img = el('img', { src: c.image, alt: 'Photo de la cagnotte « ' + c.commerce + ' »', loading: 'lazy', decoding: 'async', width: '800', height: '450' });
+      img.addEventListener('error', function () { media.classList.add('is-empty'); img.remove(); });
+      media.appendChild(img);
+    } else {
+      media.classList.add('is-empty');
+    }
+
+    var body = el('div', { class: 'card-body' }, [top, el('h3', { text: c.commerce }), meta, verif, remark, cta]);
+    return el('article', { class: 'card' }, [media, body]);
   }
 
   function filtered() {

@@ -28,6 +28,7 @@ netlify.toml          en-têtes de sécurité et de cache
   "organisateur": "Qui a lancé la cagnotte",
   "plateforme": "Leetchi",
   "lien": "https://www.leetchi.com/fr/c/…",
+  "image": "/assets/cagnottes/ville-nom-du-commerce.jpg",
   "source": { "nom": "Le Parisien", "url": "https://…" },
   "fiabilite": "presse",
   "remarque": "",
@@ -37,13 +38,15 @@ netlify.toml          en-têtes de sécurité et de cache
 ```
 
 - `fiabilite` : `presse` (un article cite la cagnotte), `mention` (la presse l'évoque sans lien), `plateforme` (page de collecte uniquement), ou `non-confirmee` (jamais affichée).
+- `image` : photo de la carte, au format 16/9 (idéalement 800×450, en JPEG). On peut reprendre l'image d'en-tête de la page Leetchi. Sans image, la carte affiche le logo LCDE sur fond jaune.
 - `source` : `null` s'il n'y a pas d'article.
 - `alerte: true` affiche la remarque en rouge (ex. : « pas une collecte officielle », « attention aux fausses cagnottes »).
 - `publie: false` garde l'entrée dans le fichier sans l'afficher.
 - Les liens doivent commencer par `https://`, sinon la cagnotte n'est pas affichée.
 
-3. Mettre à jour la date « Données mises à jour le » dans le pied de page de `index.html`.
-4. Commit + push : Netlify redéploie automatiquement.
+3. Après une modification de `styles.css` ou `app.js`, incrémenter `?v=` dans `index.html` (et `merci.html` pour le CSS).
+4. Mettre à jour la date « Données mises à jour le » dans le pied de page de `index.html`.
+5. Commit + push : Netlify redéploie automatiquement.
 
 ## Déploiement Netlify
 
