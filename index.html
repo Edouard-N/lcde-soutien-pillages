@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soutien aux commerçants pillés du 17 octobre | Le Café de l'E-Commerce</title>
+  <meta name="description" content="Les cagnottes vérifiées pour aider les commerces pillés et vandalisés le 17 octobre 2026 en France. Une initiative du Café de l'E-Commerce.">
+  <link rel="canonical" href="https://soutien.lecafedelecommerce.fr/">
+  <meta name="theme-color" content="#FEDB01">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Le Café de l'E-Commerce">
+  <meta property="og:title" content="Aidons les commerçants pillés le 17 octobre à se relever">
+  <meta property="og:description" content="Les cagnottes vérifiées des commerces pillés et vandalisés le 17 octobre 2026. Chaque don va directement au commerce.">
+  <meta property="og:url" content="https://soutien.lecafedelecommerce.fr/">
+  <meta property="og:image" content="https://soutien.lecafedelecommerce.fr/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/GlacialIndifference-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#cagnottes">Aller aux cagnottes</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://lecafedelecommerce.fr" class="brand" aria-label="Le Café de l'E-Commerce, retour au site principal">
+        <img src="/assets/logo-lcde-noir.png" alt="Le Café de l'E-Commerce" width="208" height="48">
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="#cagnottes">Les cagnottes</a>
+        <a href="#verification">Notre vérification</a>
+        <a href="#proposer" class="btn btn-primary btn-sm">Proposer une cagnotte</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Pillages du 17 octobre 2026</p>
+        <h1>Des commerces ont tout perdu en une nuit. <span class="highlight">Aidons-les à rouvrir.</span></h1>
+        <p class="lead">Le 17 octobre, des boutiques ont été pillées et vandalisées partout en France. Beaucoup de commerçants ont lancé une cagnotte. Nous les rassemblons ici, une fois vérifiées, pour que votre don arrive au bon endroit.</p>
+        <div class="hero-actions">
+          <a href="#cagnottes" class="btn btn-primary">Voir les cagnottes</a>
+          <a href="#proposer" class="btn btn-ghost">Proposer une cagnotte</a>
+        </div>
+        <dl class="stats" aria-live="polite">
+          <div><dt>Cagnottes listées</dt><dd id="stat-cagnottes">–</dd></div>
+          <div><dt>Villes</dt><dd id="stat-villes">–</dd></div>
+          <div><dt>Commission prélevée</dt><dd>0&nbsp;%</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <aside class="notice" aria-label="Important">
+      <div class="container notice-inner">
+        <svg class="notice-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 1 21h22L12 2Zm0 6 1 7h-2l1-7Zm0 9.2a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z" fill="currentColor"/></svg>
+        <p><strong>Nous ne collectons aucun argent.</strong> Chaque bouton vous emmène directement sur la plateforme de la cagnotte (Leetchi, etc.). De fausses cagnottes circulent : donnez uniquement via les liens vérifiés, et signalez-nous tout doute.</p>
+      </div>
+    </aside>
+
+    <section id="cagnottes" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Les cagnottes vérifiées</h2>
+          <p>Chaque cagnotte est contrôlée avant publication : article de presse, page officielle du commerce ou contact direct avec le commerçant.</p>
+        </div>
+
+        <div class="toolbar">
+          <label class="search">
+            <span class="visually-hidden">Rechercher un commerce, une ville, un quartier</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 0 1 5.9 12.1l4.7 4.8-1.4 1.4-4.8-4.7A7.5 7.5 0 1 1 10.5 3Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z" fill="currentColor"/></svg>
+            <input type="search" id="search" placeholder="Commerce, ville, quartier…" autocomplete="off">
+          </label>
+          <div class="chips" id="city-filters" role="group" aria-label="Filtrer par ville"></div>
+        </div>
+
+        <p class="results-count" id="results-count" aria-live="polite"></p>
+        <div class="grid" id="cagnottes-grid">
+          <noscript><p class="empty">Activez JavaScript pour afficher la liste des cagnottes.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section id="verification" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Comment nous vérifions chaque cagnotte</h2>
+          <p>Une cagnotte n'apparaît sur cette page qu'après une vérification manuelle par l'équipe du Café de l'E-Commerce.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <h3>Vous nous la signalez</h3>
+            <p>Via le formulaire ci-dessous, avec le lien de la cagnotte et une preuve : article de presse, publication de la page officielle du commerce…</p>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <h3>Nous la recoupons</h3>
+            <p>Nous vérifions que la cagnotte est citée par la presse ou par un compte officiel de la boutique, et que l'organisateur est bien lié au commerce.</p>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <h3>Elle est publiée</h3>
+            <p>Avec sa source et son niveau de vérification affichés. Si un doute apparaît ensuite, nous la retirons.</p>
+          </li>
+        </ol>
+        <ul class="legend" aria-label="Niveaux de vérification">
+          <li><span class="badge badge-presse">Confirmée par la presse</span> Un article cite explicitement la cagnotte.</li>
+          <li><span class="badge badge-mention">Mentionnée par la presse</span> La presse évoque la cagnotte sans donner son lien.</li>
+          <li><span class="badge badge-plateforme">Source : page de la cagnotte</span> Vérifiée à partir de la page de collecte, sans article de presse à ce jour.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="proposer" class="section">
+      <div class="container form-layout">
+        <div class="form-intro">
+          <h2>Proposer une cagnotte</h2>
+          <p>Vous connaissez un commerce pillé le 17 octobre qui a lancé une cagnotte ? Envoyez-la nous. Elle sera publiée après vérification manuelle par notre équipe.</p>
+          <ul class="checklist">
+            <li>Le lien direct vers la cagnotte</li>
+            <li>Une preuve : article de presse, publication Facebook ou Instagram officielle du commerce</li>
+            <li>Qui a lancé la cagnotte et son lien avec le commerce</li>
+          </ul>
+          <p class="small">Sans preuve vérifiable, nous ne pourrons pas publier la cagnotte.</p>
+        </div>
+
+        <div class="form-card">
+          <form name="nouvelle-cagnotte" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="bot-field" class="form" id="form-cagnotte" novalidate>
+            <input type="hidden" name="form-name" value="nouvelle-cagnotte">
+            <p class="visually-hidden"><label>Ne pas remplir : <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+            <fieldset>
+              <legend>Le commerce</legend>
+              <div class="field">
+                <label for="f-commerce">Nom du commerce <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-commerce" name="commerce" type="text" required maxlength="160">
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="f-ville">Ville <span class="req" aria-hidden="true">*</span></label>
+                  <input id="f-ville" name="ville" type="text" required maxlength="80">
+                </div>
+                <div class="field">
+                  <label for="f-adresse">Adresse ou quartier</label>
+                  <input id="f-adresse" name="adresse" type="text" maxlength="160">
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>La cagnotte</legend>
+              <div class="field">
+                <label for="f-lien">Lien de la cagnotte <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-lien" name="lien_cagnotte" type="url" required placeholder="https://www.leetchi.com/…" inputmode="url">
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="f-plateforme">Plateforme</label>
+                  <select id="f-plateforme" name="plateforme">
+                    <option>Leetchi</option>
+                    <option>GoFundMe</option>
+                    <option>HelloAsso</option>
+                    <option>Ulule</option>
+                    <option>KissKissBankBank</option>
+                    <option>Lydia / Sumeria</option>
+                    <option>Autre</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-organisateur">Qui l'a lancée ? <span class="req" aria-hidden="true">*</span></label>
+                  <input id="f-organisateur" name="organisateur" type="text" required maxlength="160" placeholder="Ex. : la gérante, un employé, un voisin…">
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>La preuve</legend>
+              <div class="field">
+                <label for="f-preuve">Lien de vérification <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-preuve" name="lien_preuve" type="url" required placeholder="Article de presse, post Facebook ou Instagram officiel…" inputmode="url">
+                <p class="hint">Un article de presse ou une publication du compte officiel du commerce qui mentionne la cagnotte.</p>
+              </div>
+              <div class="field">
+                <label for="f-details">Informations utiles</label>
+                <textarea id="f-details" name="details" rows="3" maxlength="1500" placeholder="Contexte, dégâts, contact du commerçant…"></textarea>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Vous</legend>
+              <div class="field-row">
+                <div class="field">
+                  <label for="f-nom">Votre nom</label>
+                  <input id="f-nom" name="nom" type="text" maxlength="120" autocomplete="name">
+                </div>
+                <div class="field">
+                  <label for="f-email">Votre e-mail <span class="req" aria-hidden="true">*</span></label>
+                  <input id="f-email" name="email" type="email" required autocomplete="email">
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="f-lien-commerce">Votre lien avec le commerce</label>
+                  <select id="f-lien-commerce" name="lien_avec_commerce">
+                    <option>Je suis le commerçant / la commerçante</option>
+                    <option>Je travaille dans ce commerce</option>
+                    <option>Je suis un proche</option>
+                    <option selected>Je suis client·e ou voisin·e</option>
+                    <option>Aucun lien direct</option>
+                  </select>
+                </div>
+              </div>
+              <label class="consent">
+                <input type="checkbox" name="consentement" value="oui" required>
+                <span>J'accepte que ces informations soient utilisées par Le Café de l'E-Commerce uniquement pour vérifier la cagnotte et me recontacter si besoin. Mon e-mail ne sera ni publié ni partagé. <span class="req" aria-hidden="true">*</span></span>
+              </label>
+            </fieldset>
+
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <button type="submit" class="btn btn-primary btn-block">Envoyer pour vérification</button>
+          </form>
+
+          <div class="form-success" id="form-success" hidden tabindex="-1">
+            <div class="success-icon" aria-hidden="true">✓</div>
+            <h3>Merci, c'est bien reçu !</h3>
+            <p>Notre équipe va vérifier cette cagnotte. Elle sera publiée ici dès que sa source est confirmée.</p>
+            <button type="button" class="btn btn-secondary" id="form-reset">Proposer une autre cagnotte</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <details class="report">
+          <summary>Une cagnotte vous semble douteuse ou une information est erronée ?</summary>
+          <form name="signalement" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="bot-field" class="form form-inline" id="form-signalement" novalidate>
+            <input type="hidden" name="form-name" value="signalement">
+            <p class="visually-hidden"><label>Ne pas remplir : <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <div class="field">
+              <label for="s-cagnotte">Cagnotte concernée <span class="req" aria-hidden="true">*</span></label>
+              <input id="s-cagnotte" name="cagnotte" type="text" required maxlength="300" placeholder="Nom du commerce ou lien">
+            </div>
+            <div class="field">
+              <label for="s-motif">Ce qui pose problème <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="s-motif" name="motif" rows="3" required maxlength="1500"></textarea>
+            </div>
+            <div class="field">
+              <label for="s-email">Votre e-mail (facultatif)</label>
+              <input id="s-email" name="email" type="email" autocomplete="email">
+            </div>
+            <p class="form-error" role="alert" hidden></p>
+            <button type="submit" class="btn btn-secondary">Envoyer le signalement</button>
+            <p class="form-success-inline" role="status" hidden>Merci, nous regardons ça rapidement.</p>
+          </form>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="https://lecafedelecommerce.fr" class="footer-logo"><img src="/assets/logo-lcde-blanc.png" alt="Le Café de l'E-Commerce" width="191" height="44" loading="lazy"></a>
+      <p>Une initiative solidaire du <a href="https://lecafedelecommerce.fr">Café de l'E-Commerce</a>, le podcast des professionnels du commerce. Nous ne percevons aucune commission et ne collectons aucun fonds : les dons sont versés directement sur les plateformes de cagnotte, qui en ont la responsabilité.</p>
+      <p class="footer-meta">Données mises à jour le <span id="maj">19 octobre 2026</span> · <a href="#proposer">Proposer une cagnotte</a> · <a href="https://lecafedelecommerce.fr">lecafedelecommerce.fr</a></p>
+    </div>
+  </footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
