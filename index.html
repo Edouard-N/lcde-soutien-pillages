@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" href="/assets/fonts/GlacialIndifference-Regular.otf" as="font" type="font/otf" crossorigin>
-  <link rel="stylesheet" href="/styles.css?v=5">
+  <link rel="stylesheet" href="/styles.css?v=6">
 </head>
 <body>
   <a class="skip-link" href="#cagnottes">Aller aux cagnottes</a>
@@ -269,9 +269,20 @@
       <a href="https://lecafedelecommerce.fr" class="footer-logo"><img src="/assets/logo-lcde-blanc.png" alt="Le Café de l'E-Commerce" width="191" height="44" loading="lazy"></a>
       <p>Une initiative solidaire du <a href="https://lecafedelecommerce.fr">Café de l'E-Commerce</a>, le podcast des professionnels du commerce. Nous ne percevons aucune commission et ne collectons aucun fonds : les dons sont versés directement sur les plateformes de cagnotte, qui en ont la responsabilité.</p>
       <p class="footer-meta">Données mises à jour le <span id="maj">19 octobre 2026</span> · <a href="#proposer">Proposer une cagnotte</a> · <a href="https://lecafedelecommerce.fr">lecafedelecommerce.fr</a></p>
+      <p class="footer-meta"><a href="https://www.lecafedelecommerce.fr/mentions-legales-et-confidentialite">Mentions légales et confidentialité</a> · <button type="button" class="link-button" data-open-cookies>Gérer les cookies</button></p>
     </div>
   </footer>
 
-  <script src="/app.js?v=5" defer></script>
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-text" hidden>
+    <p class="cookie-title" id="cookie-title">🍪 Un petit café, quelques cookies</p>
+    <p class="cookie-text" id="cookie-text">On utilise des cookies pour mesurer l'audience du site. Vous choisissez : tout accepter, ou continuer sans être suivi. <a href="https://www.lecafedelecommerce.fr/mentions-legales-et-confidentialite">En savoir plus</a></p>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-secondary btn-sm" data-consent="refuse">Refuser</button>
+      <button type="button" class="btn btn-primary btn-sm" data-consent="accept">Accepter</button>
+    </div>
+  </div>
+
+  <script src="/analytics.js?v=1" defer></script>
+  <script src="/app.js?v=6" defer></script>
 </body>
 </html>

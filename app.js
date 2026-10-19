@@ -34,6 +34,10 @@
       .replace(/[^a-z0-9]+/g, ' ').trim();
   }
 
+  function track(name, params) {
+    if (window.lcdeTrack) window.lcdeTrack(name, params);
+  }
+
   function isSafeUrl(url) {
     return /^https:\/\//i.test(url || '');
   }
@@ -98,6 +102,7 @@
       var src = el('a', { class: 'card-source', href: c.source.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': 'Lire l’article de ' + c.source.nom + newTab });
       src.textContent = c.source.nom;
       src.insertAdjacentHTML('beforeend', ICON.external);
+      src.addEventListener('click', function () { track('source_click', { boutique: nom, source: c.source.nom }); });
       verif.appendChild(src);
     }
 
@@ -114,6 +119,11 @@
       'aria-label': 'Soutenir ' + nom + ' : faire un don sur ' + (c.plateforme || 'la plateforme de la cagnotte') + newTab
     });
     cta.innerHTML = '<span>Faire un don</span>' + ICON.arrow;
+    var trackDon = function (from) {
+      return function () { track('don_click', { boutique: nom, ville: c.ville, fiabilite: c.fiabilite, emplacement: from }); };
+    };
+    cta.addEventListener('click', trackDon('bouton'));
+    media.addEventListener('click', trackDon('photo'));
 
     var body = el('div', { class: 'card-body' }, [head, lines, verif, remark]);
     return el('article', { class: 'card' }, [media, body, el('div', { class: 'card-foot' }, [cta])]);
@@ -155,6 +165,7 @@
       btn.appendChild(el('span', { class: 'count', text: String(v === 'Toutes' ? cagnottes.length : counts[v]) }));
       btn.addEventListener('click', function () {
         state.ville = v;
+        track('filtre_ville', { ville: v });
         Array.prototype.forEach.call(filtersEl.children, function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
         render();
       });
@@ -185,6 +196,9 @@
   searchInput.addEventListener('input', function () {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(function () { state.q = searchInput.value; render(); }, 120);
+  });
+  searchInput.addEventListener('change', function () {
+    if (searchInput.value.trim().length > 1) track('search', { search_term: searchInput.value.trim() });
   });
 
   /* Formulaires Netlify (envoi AJAX, repli sur /merci.html sans JS) */
@@ -253,6 +267,7 @@
   var formCagnotte = document.getElementById('form-cagnotte');
   var success = document.getElementById('form-success');
   submitNetlify(formCagnotte, function () {
+    track('generate_lead', { form_name: 'nouvelle-cagnotte' });
     formCagnotte.hidden = true;
     success.hidden = false;
     success.focus();
@@ -265,6 +280,7 @@
 
   var formSignalement = document.getElementById('form-signalement');
   submitNetlify(formSignalement, function () {
+    track('signalement_envoye', { form_name: 'signalement' });
     formSignalement.querySelector('.form-success-inline').hidden = false;
   });
 })();

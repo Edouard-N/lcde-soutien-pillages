@@ -5,6 +5,7 @@ Page solidaire du Café de l'E-Commerce. Elle liste les cagnottes **vérifiées*
 Site statique, sans build : HTML, CSS et JS vanilla.
 
 ```
+analytics.js          bandeau cookies + Google Analytics (après accord)
 index.html            page principale + formulaires Netlify (nouvelle-cagnotte, signalement)
 merci.html            page de confirmation (repli si JavaScript est désactivé)
 styles.css            charte LCDE : jaune #FEDB01, Space Grotesk, Glacial Indifference
@@ -50,6 +51,25 @@ netlify.toml          en-têtes de sécurité et de cache
 3. Après une modification de `styles.css` ou `app.js`, incrémenter `?v=` dans `index.html` (et `merci.html` pour le CSS).
 4. Mettre à jour la date « Données mises à jour le » dans le pied de page de `index.html`.
 5. Commit + push : Netlify redéploie automatiquement.
+
+## Mesure d'audience
+
+Google Analytics 4, même propriété que lecafedelecommerce.fr (`G-PDNL149Q3F`, dans `analytics.js`). GA n'est chargé qu'après un clic sur « Accepter » dans le bandeau cookies (choix mémorisé 6 mois, modifiable via « Gérer les cookies » en pied de page). Seuls les visiteurs qui acceptent sont comptés.
+
+Pour isoler ce site dans GA : filtrer sur **Nom d'hôte = soutien.lecafedelecommerce.fr**.
+
+Événements envoyés :
+
+| Événement | Quand | Paramètres |
+|---|---|---|
+| `don_click` | clic sur « Faire un don » ou sur la photo | `boutique`, `ville`, `fiabilite`, `emplacement` (bouton / photo) |
+| `source_click` | clic sur la source (article, Instagram) | `boutique`, `source` |
+| `filtre_ville` | clic sur un filtre de ville | `ville` |
+| `search` | recherche validée | `search_term` |
+| `generate_lead` | proposition de cagnotte envoyée | `form_name` |
+| `signalement_envoye` | signalement envoyé | `form_name` |
+
+Pour voir `boutique`, `ville`, etc. dans les rapports : *Admin → Définitions personnalisées → Créer une dimension personnalisée* (portée : événement) pour chaque paramètre.
 
 ## Déploiement Netlify
 
